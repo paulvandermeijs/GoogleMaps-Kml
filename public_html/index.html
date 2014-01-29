@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Google Maps + KML</title>
+<style>
+#map {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+#kmlFile {
+	border: 1px solid #aaa;
+	box-shadow: 0 0 .4em #888;
+	font-size: 18px;
+	padding: .4em;
+	left: 50%;
+	margin-left: -30%;
+	position: absolute;
+	top: 1.5em;
+	width: 60%;
+}
+</style>
+<div id="map"></div>
+<input id="kmlFile" type="text" placeholder="URL for public KML file">
+<script src="//maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script>
+var options = {
+	zoom: 12,
+	center: new google.maps.LatLng(52.0716542, 4.3098683)
+};
+
+var map = new google.maps.Map(document.getElementById('map'), options);
+
+var foursquareKml;
+
+document.getElementById('kmlFile').onchange = function() {
+	foursquareKml = new google.maps.KmlLayer({
+		url: this.value
+	});
+
+	foursquareKml.setMap(map);
+};
+</script>
