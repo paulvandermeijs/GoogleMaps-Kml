@@ -32,13 +32,13 @@ var options = {
 
 var map = new google.maps.Map(document.getElementById('map'), options);
 
-var foursquareKml;
+var kml;
 
 document.getElementById('kmlFile').onchange = function() {
-	foursquareKml = new google.maps.KmlLayer({
+	kml = new google.maps.KmlLayer({
 		url: this.value
 	});
 
-	foursquareKml.setMap(map);
+	kml.setMap(map);
 };
 </script>
